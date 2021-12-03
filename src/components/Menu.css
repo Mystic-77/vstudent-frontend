@@ -1,7 +1,14 @@
-.ui.secondary.pointing.menu {
-    background-color: #232931;
+.navbar{
+    background-color: transparent;
+    border-bottom: #74C69D 2px solid;
+}
+.nav-link{
+    color: #95D5B2;
+}
+.nav-link:hover{
+    color: #D8F3DC;
 }
 
-.ui.menu .item {
-    color: #EEEEEE !important;
+.custom-center{
+    margin-left: 42%;
 }

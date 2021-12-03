@@ -2,10 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import App from './components/App';
+import { CookiesProvider } from "react-cookie";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CookiesProvider>
+        <App />
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
