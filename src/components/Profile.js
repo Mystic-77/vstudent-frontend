@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,40 +6,37 @@ import axios from "axios";
 const Profile = () => {
 
     const [cookies, setCookies] = useCookies();
-    const [user, setUser] = useState({});
+    const [userData, setUserData] = useState({});
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const fetchData = async () => {
-            let url = "http://localhost:8080/student/id/" + cookies.username;
+            let url = "http://localhost:8080/student/user/" + cookies.username;
             let config = {
                 "headers" : {
                     "Authorization": "Bearer " + cookies.token
                 }
             }
-            // console.log(url + cookies.token);
-            let res = await axios.get(url, config).catch((err) => console.log(err));
-            console.log(res);
-            setCookies("id", res, {path: '/'});
-            var dets = await axios.get("http://localhost:8080/student/" + res.data, {
-                headers: {
-                    Authorization: "Bearer " + cookies.token
-                }
-            });
-            console.log(dets.data);
-            setUser(dets.data);
+            console.log("checkpoint 2");
+            console.log(cookies.username);
+            let res = await axios.get(url, config).then(res => {
+                console.log(res);
+                setUserData(res.data);
+            }).catch(err => console.log(err));
         };
         fetchData();
+        console.log("checkpoint 3");
     }, []);
     return (
         <>
+
             <h1 className="page-title-sub" id="profile-title">Profile</h1>
             <div className="profile-page">
-                <img src={"data:image/png;base64," + user.pfp} alt="profile picture" className="pfp-profile-page" />
-                <p id="profile-name">{user.username}</p>
-                <a id="profile-mail" href={"mailto:" + user.email} target="_blank">{user.email}</a>
+                <img src={"data:image/png;base64," + userData.pfp} alt="profile picture" className="pfp-profile-page" />
+                <p id="profile-name">{userData.username}</p>
+                <a id="profile-mail" href={"mailto:" + (userData) ? userData.email : ""} target="_blank">{userData.email}</a>
                 <div className="tag-box">
                     <ul>
-                        {user.tags && user.tags.map((tag, index) => {
+                        {userData && userData.tags && userData.tags.map((tag, index) => {
                             return (
                                 <li key={index} className="tags-list"><p className="tags-text">{tag.tagName}</p></li>
                             )

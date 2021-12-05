@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useLayoutEffect} from "react";
 import Button from "./Button";
 import auth from '../api/auth.js';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import DummyComponent from "./DummyComponent";
+import axios from "axios";
 
 const Login = () => {
 
@@ -18,7 +19,7 @@ const Login = () => {
         {
             navigate("/profile");
         }
-    }, []);
+    });
 
     const signup = (e) => {
       navigate("/signup");
@@ -37,9 +38,10 @@ const Login = () => {
         {
             let role = "";
             setCookies('token', token, {path: '/'});
-            setCookies('isLoggedIn', true, {path: '/'});
             setCookies('username', username, {path: '/'});
             setCookies('role', role, {path: '/'});
+            setCookies('isLoggedIn', true, {path: '/'});
+
             navigate('/profile');
         }
         else

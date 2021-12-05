@@ -10,6 +10,8 @@ const Logout = () => {
       removeCookies('role');
       removeCookies('token');
       removeCookies('isLoggedIn');
+      removeCookies('user');
+      removeCookies('id');
       navigate("/");
     };
     const cancel = (e) => {
