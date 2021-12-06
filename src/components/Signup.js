@@ -82,8 +82,8 @@ const Signup = () => {
                             <label className="form-label">Email</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" name="tags" placeholder="Enter tags separated by space"
-                                   value={tags}
+                            <input type="text" className="form-control" name="tags" placeholder="Tags"
+                                   value={tags} title="Enter tags separated by space"
                                    onChange={(e) => setTags(e.target.value)}
                             />
                             <label className="form-label">Tags</label>

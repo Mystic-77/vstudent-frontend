@@ -10,6 +10,8 @@ import Landing from "./Landing";
 import Profile from "./Profile";
 import Carpool from "./Carpool";
 import AddCarpool from "./AddCarpool";
+import Document from "./Document";
+import AddDocument from "./AddDocument";
 
 const App = () => {
     const [cookies, setCookies] = useCookies();
@@ -35,7 +37,8 @@ const App = () => {
                     <Route path="/blogs" exact element={ <DummyComponent title="Blogs" /> } />
                     <Route path="/carpools" exact element={ <Carpool /> } />
                     <Route path="/addCarpool" exact element={ <AddCarpool /> } />
-                    <Route path="/documents" exact element={ <DummyComponent title="Documents" /> } />
+                    <Route path="/documents" exact element={ <Document /> } />
+                    <Route path="/addDocument" exact element={ <AddDocument /> } />
                     <Route path="/profile" exact element={ <Profile /> } />
                     <Route path="/logout" exact element={ <Logout /> } />
                 </Routes>

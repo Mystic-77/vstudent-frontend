@@ -38,7 +38,7 @@ const AddCarpool = () => {
             <h1 className="page-title">Add Carpool</h1>
             <form>
                 <div className="row justify-content-center">
-                    <div className="col-3">
+                    <div className="col-3 center-content">
 
                         <div className="form-floating mb-3">
                             <input type="text" className="form-control" name="source" placeholder="Source"
@@ -55,13 +55,13 @@ const AddCarpool = () => {
                             />
                             <label className="form-label">Destination</label>
                         </div>
-
-                        <input type="datetime-local" className="form-control" name="date" placeholder="Date of Departure"
-                               value={date}
-                               onChange={(e) => setDate(e.target.value)}
-                        />
-                        <label className="form-label">Date of Departure</label>
-
+                        <div className="form-floating mb-3">
+                            <input type="datetime-local" className="form-control" name="date" placeholder="Date of Departure"
+                                   value={date}
+                                   onChange={(e) => setDate(e.target.value)}
+                            />
+                            <label className="form-label">Date of Departure</label>
+                        </div>
                         <Button name="Host Pool" onClick={(e) => submit(e)} />
 
                     </div>

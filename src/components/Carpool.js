@@ -10,6 +10,7 @@ const Carpool = () => {
     const [pools, setPools] = useState([]);
     const [cookies, setCookies] = useCookies();
     const navigate = useNavigate();
+
     useLayoutEffect(() => {
         const fetch = async () => {
             let url = "http://localhost:8080/carpool/";
@@ -37,7 +38,7 @@ const Carpool = () => {
             <div className="row justify-content-center">
                 {pools && pools.map((pool, index) => {
                     return (
-                        <div key={index} className="col-lg-3 col-md-4 col-sm-6">
+                        <div key={pool.id} className="col-lg-3 col-md-6 col-sm-6">
                             <CarpoolCard pool={pool} />
                         </div>
                     )
